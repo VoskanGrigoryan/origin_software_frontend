@@ -1,0 +1,9 @@
+.main {
+  height: 100vh;
+}
+
+.chartContainer {
+  height: 300px;
+  width: 800px;
+  /* background-color: red; */
+}

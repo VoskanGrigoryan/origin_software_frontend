@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.formInput {
+  width: 100%;
+}
+
+.form {
+  margin-bottom: 200px;
+  width: 350px;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.resetButton {
+  min-width: 130px;
+}
+
+.loginButton {
+  min-width: 130px;
+  color: #fff;
+  text-align: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background: #1890ff;
+  padding: 4px;
+}
+
+.inputErrorText {
+  color: red;
+  margin: 0;
+  padding: 0;
+}
