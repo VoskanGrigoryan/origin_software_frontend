@@ -35,7 +35,14 @@ const AppRoutes = () => {
           }
         />
 
-        <Route path="*" element={<PageNotFound />} />
+        <Route
+          path="*"
+          element={
+            <PrivateRoute>
+              <PageNotFound />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
