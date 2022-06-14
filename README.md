@@ -1,4 +1,6 @@
-## Code Challenge - Origin Software
+# Code Challenge - Origin Software
+
+## Frontend
 
 La aplicacion se divide en dos repositorios, uno para el frontend y otra para el backend.
 
@@ -34,6 +36,12 @@ La app redirige automaticamente a la ruta de (http://localhost:3000/login)
 
 3.  En caso de querer eliminar alguna accion de la tabla del usuario hacer click en el boton de "delete".
 
-**Del lado del frontend falta la vista de detalles de las acciones, se puede acceder mediante la ruta de (http://localhost:3000/details)**
+4.  Cualquier ruta fuera de las previamente mencionadas redirige a una pagina generica con un error y un boton para volver a la vista principal.
 
-4. Cualquier ruta fuera de las previamente mencionadas redirige a una pagina generica con un error y un boton para volver a la vista principal.
+## Notas:
+
+**Del lado del frontend falta la vista de detalles de las acciones, se puede acceder mediante la ruta de (http://localhost:3000/details)**
+Por complicaciones de tiempo no llegue a terminar la parte de los graficos
+
+- Desde el lado del frontend no esta implementada la autentificacion con JWT
+- Por cuestiones de tiempo la aplicacion fue armada usando la libreria Ant Design, ya que los componentes son mas completos y mas rapidos de integrar, comparado con otras opciones como Material-UI o TailwindCSS
