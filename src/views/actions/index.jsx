@@ -47,9 +47,9 @@ const MyActions = () => {
   }, [dispatch]);
 
   //Does nothing
-  // const onSelect = (e) => {
-  //   setSearchValue(e);
-  // };
+  const onSelect = (e) => {
+    setSearchValue(e);
+  };
 
   //Filters all actions with the actions already added to the user to display only those that havent been added yet.
   const options = () => {
@@ -72,6 +72,7 @@ const MyActions = () => {
 
   //Runs the dispatch for adding a new action to the user
   const addAction = () => {
+    setSearchValue();
     const obj = {
       symbol: searchValue,
     };
@@ -153,7 +154,7 @@ const MyActions = () => {
                     .toUpperCase()
                     .indexOf(inputValue.toUpperCase()) !== -1
                 }
-                // onSelect={onSelect}
+                onSelect={onSelect}
               />
             </Col>
             <Col className="addButton">
@@ -163,14 +164,7 @@ const MyActions = () => {
             </Col>
           </Row>
           <Row>
-            <ActionsTable
-              actions={userActions}
-              style={{
-                backgroundColor: "red",
-                width: "1200px",
-                minWidth: "1200px",
-              }}
-            />
+            <ActionsTable actions={userActions} />
           </Row>
         </Content>
       </Layout>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Table, Button } from "antd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeUserAction } from "../../redux/userActionsSlice";
 const { Column } = Table;
 
@@ -41,30 +41,32 @@ const { Column } = Table;
 //   },
 // ];
 
-const ActionsTable = (data) => {
+const ActionsTable = (props) => {
   const dispatch = useDispatch();
-  const [rowState, setRowState] = useState();
+  // const [rowState, setRowState] = useState();
 
-  const removeRow = () => {
-    dispatch(removeUserAction({ symbol: rowState.symbol }));
+  const removeRow = (record) => {
+    console.log(record.symbol);
+    dispatch(removeUserAction({ symbol: record.symbol }));
   };
 
   return (
-    <Table dataSource={data.actions} className="actionsTable" bordered>
-      <Column title="Symbol" dataIndex="symbol" key={data.actions.id} />
-      <Column title="Name" dataIndex="name" key={data.actions.id} />
-      <Column title="Currency" dataIndex="currency" key={data.actions.id} />
+    <Table dataSource={props.actions} className="actionsTable" bordered>
+      <Column title="Symbol" dataIndex="symbol" />
+      <Column title="Name" dataIndex="name" />
+      <Column title="Currency" dataIndex="currency" />
       <Column
+        dataIndex="action"
         width={50}
         align="center"
         title="Action"
-        key={data.actions.id}
         render={(_, record) => (
           <Button
             type="primary"
             onClick={() => {
-              setRowState(record);
-              removeRow();
+              // console.log(record);
+              // setRowState(record);
+              removeRow(record);
             }}
           >
             Delete
