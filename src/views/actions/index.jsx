@@ -32,13 +32,17 @@ const MyActions = () => {
   //states that affect the search input
   const [searchInput, setSearchInput] = useState();
   const [searchValue, setSearchValue] = useState();
+  const [value, setValue] = useState("");
+
+  const onChange = (data) => {
+    // console.log(data);
+    setValue(data);
+  };
 
   //Gets all the actions from database
   const actions = useSelector((state) => state.actions);
   //Gets all the actions associated to user from database
   const userActions = useSelector((state) => state.userActions);
-
-  console.log(userActions);
 
   const username = JSON.parse(localStorage.getItem("user_name"));
 
@@ -54,13 +58,7 @@ const MyActions = () => {
     setSearchValue(e);
   };
 
-  //Filters all actions with the actions already added to the user to display only those that havent been added yet.
-
   const searchList = {};
-
-  // if (actions.data) {
-  //   searchList.push(actions.actions.slice(0, 100));
-  // }
 
   searchList.data = actions.actions.slice(0, 100);
 
@@ -84,22 +82,22 @@ const MyActions = () => {
 
   //Runs the dispatch for adding a new action to the user
   const addAction = () => {
-    setSearchValue();
-
     const actionData = searchList.data.find(
       (elem) => elem.symbol === searchValue
     );
 
-    //Extremely tedious and unneccesary in a real situation
+    //-Extremely tedious and unneccesary in a real situation
     var username = window.localStorage.getItem("user_name");
     const cleanUsername = username.replaceAll('"', "");
-
+    //---------------------------------------------------------//
     const obj = {
       userName: cleanUsername,
       action: actionData,
     };
 
     dispatch(addUserAction(obj));
+
+    setValue("A");
   };
 
   return (
@@ -167,10 +165,13 @@ const MyActions = () => {
           <Row>
             <Col>
               <AutoComplete
+                allowClear
                 style={{
                   width: 300,
                 }}
                 options={result}
+                value={value}
+                onChange={onChange}
                 placeholder="Search"
                 filterOption={(inputValue, option) =>
                   option.value

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Table, Button } from "antd";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeUserAction } from "../../redux/userActionsSlice";
+import { green } from "@ant-design/colors";
+
 const { Column } = Table;
 
 const ActionsTable = (props) => {
@@ -13,7 +15,20 @@ const ActionsTable = (props) => {
   };
 
   return (
-    <Table dataSource={props.actions} className="actionsTable" bordered>
+    <Table
+      dataSource={props.actions}
+      size="small"
+      className="actionsTable"
+      bordered
+      rowKey="id"
+      pagination={{
+        pageSize: 10,
+      }}
+      scroll={{
+        y: 280,
+        x: "max-content",
+      }}
+    >
       <Column title="Symbol" dataIndex="symbol" />
       <Column title="Name" dataIndex="name" />
       <Column title="Currency" dataIndex="currency" />
@@ -25,8 +40,9 @@ const ActionsTable = (props) => {
         render={(_, record) => (
           <Button
             type="primary"
+            danger
             onClick={() => {
-              // console.log(record);
+              console.log(record);
               // setRowState(record);
               removeRow(record);
             }}
@@ -35,17 +51,25 @@ const ActionsTable = (props) => {
           </Button>
         )}
       />
+      <Column
+        dataIndex="action"
+        width={50}
+        align="center"
+        title="Action"
+        render={(_, record) => (
+          <Button
+            type="primary"
+            onClick={() => {
+              console.log(record);
+              // setRowState(record);
+              removeRow(record);
+            }}
+          >
+            More
+          </Button>
+        )}
+      />
     </Table>
-
-    // Old table build, keeping it just in case
-
-    // <Table
-    //   columns={columns}
-    //   rowKey={data.id}
-    //   dataSource={data.actions}
-    //   className="actionsTable"
-    //   bordered
-    // />
   );
 };
 

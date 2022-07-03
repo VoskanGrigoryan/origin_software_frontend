@@ -24,7 +24,16 @@ export const addUserAction = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const result = await ActionService.newUserAction(data);
-      thunkAPI.dispatch(getUserActions(data));
+
+      //Not working because of thunkAPI logic related to payload type..
+      // thunkAPI.dispatch(getUserActions(data));
+
+      //User_id value is being hardcoded
+      thunkAPI.dispatch(
+        getUserActions({
+          user_id: 1,
+        })
+      );
       return result;
     } catch (error) {
       console.log(error);
