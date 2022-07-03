@@ -18,7 +18,7 @@ import {
 } from "antd";
 import ActionsTable from "../../components/tables/ActionsTable";
 import { useSelector, useDispatch } from "react-redux";
-import { getActions } from "../../redux/actionsSlice";
+import { fetchAllActions } from "../../redux/actionsSlice";
 import { getUserActions, addUserAction } from "../../redux/userActionsSlice";
 // import { Navigate } from "react-router-dom";
 
@@ -42,7 +42,8 @@ const MyActions = () => {
 
   //Runs the dispatch actions for both all actions as well as user actions
   useEffect(() => {
-    dispatch(getActions());
+    // dispatch(getActions());
+    dispatch(fetchAllActions());
     dispatch(getUserActions({ user_id: 1 }));
   }, [dispatch]);
 
@@ -52,8 +53,17 @@ const MyActions = () => {
   };
 
   //Filters all actions with the actions already added to the user to display only those that havent been added yet.
+
+  const searchList = {};
+
+  // if (actions.data) {
+  //   searchList.push(actions.actions.slice(0, 100));
+  // }
+
+  searchList.data = actions.actions.slice(0, 100);
+
   const options = () => {
-    const filteredData = actions.filter((elem) => {
+    const filteredData = searchList.data.filter((elem) => {
       return !userActions.find((element) => element.symbol === elem.symbol);
     });
 
