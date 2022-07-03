@@ -4,46 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeUserAction } from "../../redux/userActionsSlice";
 const { Column } = Table;
 
-//Used for old table build, needed column array, on current build its not neccesary.
-// const columns = [
-//   {
-//     title: "Symbol",
-//     dataIndex: "symbol",
-//     key: "symbol",
-//   },
-//   {
-//     title: "Name",
-//     dataIndex: "name",
-//     key: "name",
-//   },
-//   {
-//     title: "Currency",
-//     dataIndex: "currency",
-//     key: "currency",
-//   },
-//   {
-//     title: "Action",
-//     key: "action",
-//     width: " 150px",
-//     align: "center",
-//     render: (text, record, index) => (
-//       <Space size="middle">
-//         <Button
-//           type="primary"
-//           onClick={(e) => {
-//             console.log(e.target.value);
-//           }}
-//         >
-//           Delete
-//         </Button>
-//       </Space>
-//     ),
-//   },
-// ];
-
 const ActionsTable = (props) => {
   const dispatch = useDispatch();
-  // const [rowState, setRowState] = useState();
 
   const removeRow = (record) => {
     console.log(record.symbol);

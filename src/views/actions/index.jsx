@@ -38,6 +38,8 @@ const MyActions = () => {
   //Gets all the actions associated to user from database
   const userActions = useSelector((state) => state.userActions);
 
+  console.log(userActions);
+
   const username = JSON.parse(localStorage.getItem("user_name"));
 
   //Runs the dispatch actions for both all actions as well as user actions
@@ -83,9 +85,20 @@ const MyActions = () => {
   //Runs the dispatch for adding a new action to the user
   const addAction = () => {
     setSearchValue();
+
+    const actionData = searchList.data.find(
+      (elem) => elem.symbol === searchValue
+    );
+
+    //Extremely tedious and unneccesary in a real situation
+    var username = window.localStorage.getItem("user_name");
+    const cleanUsername = username.replaceAll('"', "");
+
     const obj = {
-      symbol: searchValue,
+      userName: cleanUsername,
+      action: actionData,
     };
+
     dispatch(addUserAction(obj));
   };
 

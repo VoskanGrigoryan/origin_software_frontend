@@ -24,11 +24,7 @@ export const addUserAction = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const result = await ActionService.newUserAction(data);
-      thunkAPI.dispatch(
-        getUserActions({
-          user_id: 1,
-        })
-      );
+      thunkAPI.dispatch(getUserActions(data));
       return result;
     } catch (error) {
       console.log(error);
