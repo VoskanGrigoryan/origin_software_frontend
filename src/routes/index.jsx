@@ -2,8 +2,9 @@ import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Login from "../auth/Login";
 import MyActions from "../views/actions";
+import DetailsView from "../views/detail";
 import PageNotFound from "../views/errors/PageNotFound";
-import Details from "../views/detail";
+
 import { PrivateRoute, LoginRoute } from "./ProtectedRoutes";
 
 const AppRoutes = () => {
@@ -30,7 +31,7 @@ const AppRoutes = () => {
           path="/details"
           element={
             <PrivateRoute>
-              <Details />
+              <DetailsView />
             </PrivateRoute>
           }
         />

@@ -35,7 +35,6 @@ const MyActions = () => {
   const [value, setValue] = useState("");
 
   const onChange = (data) => {
-    // console.log(data);
     setValue(data);
   };
 
@@ -86,7 +85,7 @@ const MyActions = () => {
       (elem) => elem.symbol === searchValue
     );
 
-    //-Extremely tedious and unneccesary in a real situation
+    //Extremely tedious and unneccesary in a real situation
     var username = window.localStorage.getItem("user_name");
     const cleanUsername = username.replaceAll('"', "");
     //---------------------------------------------------------//

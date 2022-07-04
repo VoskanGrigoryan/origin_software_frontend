@@ -2,12 +2,13 @@ import React from "react";
 import { Table, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { removeUserAction } from "../../redux/userActionsSlice";
-import { green } from "@ant-design/colors";
+import { useNavigate } from "react-router-dom";
 
 const { Column } = Table;
 
 const ActionsTable = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const removeRow = (record) => {
     console.log(record.symbol);
@@ -60,9 +61,11 @@ const ActionsTable = (props) => {
           <Button
             type="primary"
             onClick={() => {
-              console.log(record);
+              // console.log(record);
               // setRowState(record);
-              removeRow(record);
+              // removeRow(record);
+              localStorage.setItem("action", JSON.stringify(record));
+              navigate("/details");
             }}
           >
             More
