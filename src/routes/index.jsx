@@ -1,8 +1,14 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Login from "../auth/Login";
 import MyActions from "../views/actions";
 import DetailsView from "../views/detail";
+import Welcome from "../views/welcome";
 import PageNotFound from "../views/errors/PageNotFound";
 
 import { PrivateRoute, LoginRoute } from "./ProtectedRoutes";
@@ -36,6 +42,7 @@ const AppRoutes = () => {
           }
         />
 
+        <Route path="/" element={<Welcome />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
